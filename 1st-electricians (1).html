@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1st Electricians Dallas — Licensed Electrical Contractors</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #0a0a0a;
+    --deep: #111318;
+    --panel: #16191f;
+    --border: #232730;
+    --yellow: #f5c518;
+    --yellow-dim: #c49b0e;
+    --white: #f0ece4;
+    --gray: #8a8f9a;
+    --light: #c8ccd4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 48px;
+    height: 72px;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+    text-decoration: none;
+  }
+  .logo-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--yellow);
+    letter-spacing: 1px;
+  }
+  .logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.35rem;
+    color: var(--white);
+    letter-spacing: 3px;
+  }
+
+  nav { display: flex; gap: 36px; align-items: center; }
+  nav a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  nav a:hover { color: var(--yellow); }
+
+  .cta-btn {
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    display: inline-block;
+  }
+  .cta-btn:hover { background: var(--yellow-dim); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 80px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .eyebrow {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .eyebrow::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 1px;
+    background: var(--yellow);
+  }
+
+  h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 8vw, 7.5rem);
+    line-height: 0.92;
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 32px;
+  }
+  h1 span { color: var(--yellow); }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--light);
+    max-width: 440px;
+    margin-bottom: 48px;
+    font-weight: 300;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+
+  .btn-outline {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 10px 22px;
+    border: 1px solid var(--border);
+    color: var(--light);
+    background: transparent;
+    cursor: pointer;
+    text-decoration: none;
+    transition: border-color .2s, color .2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); }
+
+  .hero-right {
+    position: relative;
+    background: var(--deep);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Electric bolt SVG illustration */
+  .bolt-bg {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.07;
+  }
+  .bolt-bg svg { width: 70%; height: auto; }
+
+  .hero-stats {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    width: 380px;
+  }
+  .stat-card {
+    background: var(--panel);
+    padding: 36px 28px;
+    border: 1px solid var(--border);
+    transition: border-color .25s;
+  }
+  .stat-card:hover { border-color: var(--yellow); }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.2rem;
+    color: var(--yellow);
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+  .stat-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gray);
+  }
+
+  /* zigzag divider */
+  .zag {
+    width: 100%;
+    height: 40px;
+    background: var(--black);
+    clip-path: polygon(0 0, 100% 100%, 100% 100%, 0 100%);
+  }
+
+  /* ── SERVICES ── */
+  section { padding: 100px 80px; }
+
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-label::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--yellow);
+  }
+
+  h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    letter-spacing: 2px;
+    color: var(--white);
+    margin-bottom: 60px;
+    line-height: 1;
+  }
+  h2 span { color: var(--yellow); }
+
+  #services { background: var(--deep); }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--panel);
+    padding: 44px 36px;
+    border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+    transition: transform .25s, border-color .25s;
+    cursor: default;
+  }
+  .service-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0;
+    width: 0; height: 2px;
+    background: var(--yellow);
+    transition: width .35s;
+  }
+  .service-card:hover { transform: translateY(-4px); border-color: rgba(245,197,24,0.3); }
+  .service-card:hover::after { width: 100%; }
+
+  .service-icon {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    display: block;
+  }
+  .service-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 14px;
+  }
+  .service-desc {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    color: var(--gray);
+  }
+
+  /* ── WHY US ── */
+  #why { background: var(--black); }
+
+  .why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+  }
+  .why-points { display: flex; flex-direction: column; gap: 32px; }
+  .why-point {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 28px 24px;
+    border: 1px solid var(--border);
+    background: var(--panel);
+    transition: border-color .25s;
+  }
+  .why-point:hover { border-color: rgba(245,197,24,0.4); }
+  .why-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.5rem;
+    color: var(--yellow);
+    line-height: 1;
+    min-width: 48px;
+    opacity: 0.6;
+  }
+  .why-body h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .why-body p { font-size: 0.88rem; line-height: 1.7; color: var(--gray); }
+
+  .why-visual {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 56px 48px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .why-visual::before {
+    content: '⚡';
+    position: absolute;
+    top: -20px; right: -10px;
+    font-size: 12rem;
+    opacity: 0.04;
+    pointer-events: none;
+  }
+  .rating-big {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 7rem;
+    color: var(--yellow);
+    line-height: 1;
+  }
+  .stars { font-size: 1.5rem; letter-spacing: 4px; color: var(--yellow); margin-bottom: 8px; }
+  .rating-note { font-size: 0.85rem; color: var(--gray); font-family: 'DM Mono', monospace; letter-spacing: 1px; }
+  .badges { display: flex; flex-direction: column; gap: 12px; }
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--light);
+    padding: 12px 0;
+    border-top: 1px solid var(--border);
+  }
+  .badge-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--yellow);
+    flex-shrink: 0;
+  }
+
+  /* ── REVIEWS ── */
+  #reviews { background: var(--deep); }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+  .review-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    padding: 36px 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    transition: border-color .25s, transform .25s;
+  }
+  .review-card:hover { border-color: rgba(245,197,24,0.3); transform: translateY(-3px); }
+  .review-stars { color: var(--yellow); font-size: 0.9rem; letter-spacing: 2px; }
+  .review-text {
+    font-size: 0.92rem;
+    line-height: 1.72;
+    color: var(--light);
+    flex: 1;
+  }
+  .review-author {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+  .review-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--yellow);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1rem;
+    color: var(--black);
+    flex-shrink: 0;
+  }
+  .review-name {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--white);
+  }
+  .review-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 1px;
+    color: var(--gray);
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--black); }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 32px; }
+  .contact-item {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-icon { font-size: 1.4rem; min-width: 32px; }
+  .contact-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--yellow);
+    margin-bottom: 6px;
+  }
+  .contact-value {
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 400;
+  }
+
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  input, textarea, select {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.9rem;
+    padding: 14px 18px;
+    width: 100%;
+    outline: none;
+    transition: border-color .2s;
+    appearance: none;
+  }
+  input::placeholder, textarea::placeholder { color: var(--gray); }
+  input:focus, textarea:focus, select:focus { border-color: var(--yellow); }
+  textarea { resize: vertical; min-height: 120px; }
+  select option { background: var(--panel); }
+
+  .form-submit {
+    background: var(--yellow);
+    color: var(--black);
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+    padding: 16px 32px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    transition: background .2s, transform .15s;
+    margin-top: 8px;
+  }
+  .form-submit:hover { background: var(--yellow-dim); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--deep);
+    border-top: 1px solid var(--border);
+    padding: 48px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-copy {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    color: var(--gray);
+  }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    color: var(--gray);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .footer-links a:hover { color: var(--yellow); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.6; }
+  }
+
+  .hero-left > * {
+    opacity: 0;
+    animation: fadeUp .7s forwards;
+  }
+  .hero-left > *:nth-child(1) { animation-delay: .1s; }
+  .hero-left > *:nth-child(2) { animation-delay: .25s; }
+  .hero-left > *:nth-child(3) { animation-delay: .4s; }
+  .hero-left > *:nth-child(4) { animation-delay: .55s; }
+
+  .live-dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--yellow);
+    margin-right: 6px;
+    animation: pulse 2s infinite;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    header { padding: 0 24px; }
+    nav { display: none; }
+    section { padding: 70px 28px; }
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 28px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; gap: 40px; }
+    .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    footer { flex-direction: column; align-items: flex-start; padding: 32px 28px; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <a class="logo" href="#">
+    <span class="logo-num">1ST</span>
+    <span class="logo-text">Electricians</span>
+  </a>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#why">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <a class="cta-btn" href="#contact">Get a Quote</a>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="eyebrow"><span class="live-dot"></span>Dallas, TX — Licensed &amp; Insured</div>
+    <h1>Power<br>Done<br><span>Right.</span></h1>
+    <p class="hero-desc">Dallas's trusted electrical contractors. From smart home upgrades to full wiring installations — we show up on time, do it clean, and get it right the first time.</p>
+    <div class="hero-actions">
+      <a class="cta-btn" href="#contact">Book a Service</a>
+      <a class="btn-outline" href="#reviews">Read Reviews</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="bolt-bg">
+      <svg viewBox="0 0 200 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="120,0 40,160 100,160 80,300 160,120 100,120" fill="#f5c518"/>
+      </svg>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">5★</div>
+        <div class="stat-label">Google Rating</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">100%</div>
+        <div class="stat-label">Satisfaction</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">24H</div>
+        <div class="stat-label">Response Time</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">DFW</div>
+        <div class="stat-label">Dallas–Fort Worth</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2>Our <span>Services</span></h2>
+  <div class="services-grid">
+    <div class="service-card">
+      <span class="service-icon">⚡</span>
+      <div class="service-title">Wiring &amp; Rewiring</div>
+      <p class="service-desc">Full residential and commercial wiring installations. Outlets, circuits, panels — done rapidly, safely, and up to code.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🏠</span>
+      <div class="service-title">Smart Home Upgrades</div>
+      <p class="service-desc">Smart switches, smart thermostats, and whole-home automation. We handle the setup, app linking, and walk you through using everything.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">💡</span>
+      <div class="service-title">Light Fixture Install</div>
+      <p class="service-desc">Ceiling fans, pendant lights, recessed lighting, and outdoor fixtures installed cleanly and correctly.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔌</span>
+      <div class="service-title">Outlets &amp; Switches</div>
+      <p class="service-desc">Outlet and switch installation, replacement, and upgrades — including GFCI, AFCI, and USB outlets.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🔋</span>
+      <div class="service-title">Panel Upgrades</div>
+      <p class="service-desc">Electrical panel replacement and upgrades to support modern power demands safely and reliably.</p>
+    </div>
+    <div class="service-card">
+      <span class="service-icon">🛡️</span>
+      <div class="service-title">Safety Inspections</div>
+      <p class="service-desc">Comprehensive electrical safety checks for homes and businesses. Catch problems before they become hazards.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-label">Why Choose Us</div>
+  <h2>The <span>1st Choice</span><br>in Dallas</h2>
+  <div class="why-grid">
+    <div class="why-points">
+      <div class="why-point">
+        <div class="why-num">01</div>
+        <div class="why-body">
+          <h3>On-Time, Every Time</h3>
+          <p>Our technicians arrive when we say they will. Your time matters — we respect it.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-num">02</div>
+        <div class="why-body">
+          <h3>Meticulous &amp; Thorough</h3>
+          <p>Clean work, clean site. Every job is done carefully and completely — no shortcuts, no mess left behind.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-num">03</div>
+        <div class="why-body">
+          <h3>Tech-Savvy Experts</h3>
+          <p>From smart thermostats to full home automation — we know the latest technology and walk you through every step.</p>
+        </div>
+      </div>
+      <div class="why-point">
+        <div class="why-num">04</div>
+        <div class="why-body">
+          <h3>Clear Communication</h3>
+          <p>We explain what we're doing and why. No confusion, no surprises — just straightforward, honest service.</p>
+        </div>
+      </div>
+    </div>
+    <div class="why-visual">
+      <div>
+        <div class="rating-big">5.0</div>
+        <div class="stars">★★★★★</div>
+        <div class="rating-note">Google Reviews — Dallas, TX</div>
+      </div>
+      <div class="badges">
+        <div class="badge"><span class="badge-dot"></span>Licensed &amp; Insured in Texas</div>
+        <div class="badge"><span class="badge-dot"></span>Residential &amp; Commercial</div>
+        <div class="badge"><span class="badge-dot"></span>Smart Home Certified</div>
+        <div class="badge"><span class="badge-dot"></span>Serving Greater Dallas–Fort Worth</div>
+        <div class="badge"><span class="badge-dot"></span>Free Estimates Available</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-label">Customer Reviews</div>
+  <h2>What Dallas<br><span>Is Saying</span></h2>
+  <div class="reviews-grid">
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"We wanted new smart switches throughout the house. They knew the technology well, walked us through the setup, and got it working flawlessly. Fantastic service."</p>
+      <div class="review-author">
+        <div class="review-avatar">RR</div>
+        <div>
+          <div class="review-name">Russell Ridge</div>
+          <div class="review-date">8 months ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Everything was great from the beginning to the end. The new plugs and wires were put in quickly and safely."</p>
+      <div class="review-author">
+        <div class="review-avatar">LB</div>
+        <div>
+          <div class="review-name">Lupita Bryant</div>
+          <div class="review-date">3 months ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"For future electrical improvements, we would employ them again. Good overall experience."</p>
+      <div class="review-author">
+        <div class="review-avatar">CL</div>
+        <div>
+          <div class="review-name">Carrie Lenz</div>
+          <div class="review-date">3 months ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Trustworthy electrician. The technician arrived on time and was meticulous. Happy with service."</p>
+      <div class="review-author">
+        <div class="review-avatar">BP</div>
+        <div>
+          <div class="review-name">Brittney Perkins</div>
+          <div class="review-date">4 months ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I hired this electrician to install a smart thermostat. He set it up, linked it to my phone, and showed me how to use it. The whole process was smooth and helpful."</p>
+      <div class="review-author">
+        <div class="review-avatar">JD</div>
+        <div>
+          <div class="review-name">John Downing</div>
+          <div class="review-date">10 months ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Reliable, efficient electricity. The work was done cleanly and on time."</p>
+      <div class="review-author">
+        <div class="review-avatar">BL</div>
+        <div>
+          <div class="review-name">Bernardo L. Carvalho</div>
+          <div class="review-date">3 months ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I recently hired a professional for my home's electrical needs and I'm thoroughly impressed. The expert arrived promptly and skillfully handled the task with no hassle."</p>
+      <div class="review-author">
+        <div class="review-avatar">KG</div>
+        <div>
+          <div class="review-name">Kaycee Mae Guevarra</div>
+          <div class="review-date">2 years ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"I must give this neighborhood electrician a major shout-out! When it comes to installing sockets and switches, they are just wonderful."</p>
+      <div class="review-author">
+        <div class="review-avatar">TC</div>
+        <div>
+          <div class="review-name">Taylor Chandler</div>
+          <div class="review-date">2 years ago</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="review-card">
+      <div class="review-stars">★★★★★</div>
+      <p class="review-text">"Great job putting on the light fixture. The electrician was kind, knew what he was doing, and did a great job."</p>
+      <div class="review-author">
+        <div class="review-avatar">JW</div>
+        <div>
+          <div class="review-name">Joelle Wilkie</div>
+          <div class="review-date">2 months ago</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2>Request a<br><span>Free Quote</span></h2>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="contact-icon">📍</div>
+        <div>
+          <div class="contact-label">Location</div>
+          <div class="contact-value">Dallas, Texas &amp; Greater DFW Area</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">📞</div>
+        <div>
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">(214) 295-3670</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">✉️</div>
+        <div>
+          <div class="contact-label">Email</div>
+          <div class="contact-value">info@1stelectricians.com</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-icon">🕐</div>
+        <div>
+          <div class="contact-label">Hours</div>
+          <div class="contact-value">Mon–Sat: 7am – 7pm<br>Emergency calls available</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form">
+      <div class="form-row">
+        <input type="text" placeholder="First Name">
+        <input type="text" placeholder="Last Name">
+      </div>
+      <input type="email" placeholder="Email Address">
+      <input type="tel" placeholder="Phone Number">
+      <select>
+        <option value="" disabled selected>Select a Service</option>
+        <option>Wiring &amp; Rewiring</option>
+        <option>Smart Home Upgrade</option>
+        <option>Light Fixture Installation</option>
+        <option>Outlets &amp; Switches</option>
+        <option>Panel Upgrade</option>
+        <option>Safety Inspection</option>
+        <option>Other</option>
+      </select>
+      <textarea placeholder="Tell us about your project..."></textarea>
+      <button class="form-submit" onclick="alert('Thanks! We\'ll be in touch within 24 hours.')">Send Request ⚡</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2025 1st Electricians Dallas. All rights reserved. Licensed &amp; Insured in Texas.</div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
